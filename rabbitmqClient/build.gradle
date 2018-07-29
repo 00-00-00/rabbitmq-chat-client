@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+ext {
+  kotlin_version = '1.2.51'
+}
+
+repositories {
+  mavenCentral()
+}
+
+
+compileKotlin {
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  compile 'com.rabbitmq:amqp-client:5.3.0'
+  compile group: 'io.micrometer', name: 'micrometer-core', version: '1.0.2'
+  compile group: 'com.google.guava', name: 'guava', version: '22.0'
+}
